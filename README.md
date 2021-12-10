@@ -1,4 +1,4 @@
-# spring-batch-poc from [baeldung spring-boot-spring-batch](https://www.baeldung.com/spring-boot-spring-batch)
+# spring-batch-poc from [baeldung](https://www.baeldung.com/spring-boot-spring-batch)
 
  - SpringBoot 2.5.7, Java 11, h2database
 
