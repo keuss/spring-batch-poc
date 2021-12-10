@@ -37,7 +37,7 @@ public class BatchCoffeeConfiguration {
     private String fileInput;
 
     //  T read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException;
-    // java -Dspring.batch.job.names=importCoffeeJob -Dfile.input="C:\Users\X153216\NSB\01-apps\jdk-11.0.2\bin\foo.csv" -jar demo-batch-0.0.1-SNAPSHOT.jar
+    // java -Dspring.batch.job.names=importCoffeeJob -jar demo-batch-0.0.1-SNAPSHOT.jar
     @Bean
     public FlatFileItemReader<Coffee> reader() {
         return new FlatFileItemReaderBuilder<Coffee>().name("coffeeItemReader")
