@@ -36,14 +36,14 @@ public class BatchCoffeeReaderConfiguration {
     }
 
     @Bean
-    public JdbcPagingItemReader<Coffee> itemReader(DataSource customDataSource, PagingQueryProvider queryProvider) {
+    public JdbcPagingItemReader<Coffee> itemReader(DataSource dataSource, PagingQueryProvider queryProvider) {
         log.info("itemReader build");
         Map<String, Object> parameterValues = new HashMap<>();
         parameterValues.put("characteristics", "Strong");
 
         return new JdbcPagingItemReaderBuilder<Coffee>()
                 .name("itemReader")
-                .dataSource(customDataSource)
+                .dataSource(dataSource)
                 .queryProvider(queryProvider)
                 .parameterValues(parameterValues)
                 .rowMapper(customerCofferMapper())
@@ -52,10 +52,10 @@ public class BatchCoffeeReaderConfiguration {
     }
 
     @Bean
-    public SqlPagingQueryProviderFactoryBean queryProvider(DataSource customDataSource) {
+    public SqlPagingQueryProviderFactoryBean queryProvider(DataSource dataSource) {
         SqlPagingQueryProviderFactoryBean provider = new SqlPagingQueryProviderFactoryBean();
 
-        provider.setDataSource(customDataSource);
+        provider.setDataSource(dataSource);
         provider.setSelectClause("select brand, origin, characteristics");
         provider.setFromClause("from coffee");
         provider.setWhereClause("where characteristics=:characteristics");
